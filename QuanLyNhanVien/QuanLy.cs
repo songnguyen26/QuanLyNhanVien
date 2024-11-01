@@ -17,7 +17,7 @@ namespace QuanLyNhanVien
     public partial class QuanLy : Form
     {
         HRmanagementEntities context= new HRmanagementEntities();
-        List<Models.Employee> lst;
+        List<Employee> lst;
         BindingSource bs= new BindingSource();
         string fileName = "";
         public QuanLy()
@@ -88,7 +88,7 @@ namespace QuanLyNhanVien
                 em.role_id = (int)cbRole.SelectedValue;
                 if (!string.IsNullOrEmpty(fileName))
                 {
-                    string imageFolder = @"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image";
+                    string imageFolder = @"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image\avatar";
                     string destinationPath = Path.Combine(imageFolder, fileName);
                     if (pbImage.ImageLocation != null && !File.Exists(destinationPath))
                     {
@@ -102,7 +102,7 @@ namespace QuanLyNhanVien
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Lỗi" +ex);
+                MessageBox.Show("Mã nhân viên đã tồn tại hoặc thông tin chưa đầy đủ");
             }
             
             bs.ResetBindings(false);
@@ -151,7 +151,7 @@ namespace QuanLyNhanVien
                 em.role_id = (int)cbRole.SelectedValue;
                 if (!string.IsNullOrEmpty(fileName))
                 {
-                    string imageFolder = @"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image";
+                    string imageFolder = @"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image\avatar";
                     string destinationPath = Path.Combine(imageFolder, fileName);
                     if (pbImage.ImageLocation != null && !File.Exists(destinationPath))
                     {
@@ -185,24 +185,14 @@ namespace QuanLyNhanVien
         }
         public static string GenerateSlug(string input)
         {
-            // Chuyển chuỗi sang chữ thường
             string slug = input.ToLowerInvariant();
-
-            // Loại bỏ các ký tự không hợp lệ
             slug = Regex.Replace(slug, @"[^a-z0-9\s-]", "");
-
-            // Thay thế khoảng trắng và các ký tự không hợp lệ bằng dấu gạch ngang
             slug = Regex.Replace(slug, @"\s+", "-").Trim('-');
-
-            // Loại bỏ các dấu gạch ngang thừa
             slug = Regex.Replace(slug, @"-+", "-");
-
-            // Cắt chuỗi nếu cần (ví dụ: giới hạn 200 ký tự)
             if (slug.Length > 200)
             {
                 slug = slug.Substring(0, 200).Trim('-');
             }
-
             return slug;
         }
 
@@ -215,28 +205,19 @@ namespace QuanLyNhanVien
                 tbName.Text = emm.name;
                 tbId.Text = emm.id.ToString();
                 tbAddress.Text = emm.address;
-                if (emm.role_id.HasValue)
-                {
-                    cbRole.SelectedValue = emm.role_id;
-                }
-
-                if (emm.deparment_id.HasValue)
-                {
-                    cbDepartment.SelectedValue = emm.deparment_id;
-                }
-                dtpDOB.Value = emm.dob ?? DateTime.Now; 
-
-                ckGender.Checked = emm.gender.HasValue && emm.gender.Value == true;
-
+                
+                cbRole.SelectedValue = emm.role_id;
+                cbDepartment.SelectedValue = emm.deparment_id;
+                ckGender.Checked = (bool)emm.gender;
                 if (emm.image != null)
                 {
-                    pbImage.ImageLocation = System.IO.Path.Combine(@"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image", emm.image);
+                    pbImage.ImageLocation = System.IO.Path.Combine(@"D:\TaiLieu\winform\QuanLyNhanVien\QuanLyNhanVien\Image\avatar", emm.image);
                 }
             }
-            else
-            {
-                MessageBox.Show("Dữ liệu rỗng");
-            }
+            //else
+            //{
+            //    MessageBox.Show("Dữ liệu rỗng");
+            //}
         }
 
 

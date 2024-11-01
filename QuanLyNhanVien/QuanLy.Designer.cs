@@ -96,7 +96,7 @@
             // 
             // Column3
             // 
-            this.Column3.DataPropertyName = "Address";
+            this.Column3.DataPropertyName = "address";
             this.Column3.HeaderText = "Địa chỉ";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
@@ -104,7 +104,7 @@
             // 
             // Column4
             // 
-            this.Column4.DataPropertyName = "DOB";
+            this.Column4.DataPropertyName = "dob";
             this.Column4.HeaderText = "Ngày sinh";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -112,7 +112,7 @@
             // 
             // Column5
             // 
-            this.Column5.DataPropertyName = "Department";
+            this.Column5.DataPropertyName = "deparment_id";
             this.Column5.HeaderText = "Phòng ban";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -120,7 +120,7 @@
             // 
             // Column6
             // 
-            this.Column6.DataPropertyName = "Role";
+            this.Column6.DataPropertyName = "role_id";
             this.Column6.HeaderText = "Chức vụ";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
@@ -128,7 +128,7 @@
             // 
             // Column8
             // 
-            this.Column8.DataPropertyName = "Gender";
+            this.Column8.DataPropertyName = "gender";
             this.Column8.HeaderText = "Giới tính(Nam)";
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
@@ -271,6 +271,7 @@
             this.pbImage.Location = new System.Drawing.Point(570, 264);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(123, 100);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImage.TabIndex = 17;
             this.pbImage.TabStop = false;
             // 
@@ -369,6 +370,8 @@
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Button btnImgPicker;
         private System.Windows.Forms.CheckBox ckGender;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -376,8 +379,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column8;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbRole;
     }
 }
 
