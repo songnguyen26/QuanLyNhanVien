@@ -80,11 +80,30 @@ namespace QuanLyNhanVien
             try
             {
                 em.id = int.Parse(tbId.Text);
+                if (tbName.Text == "")
+                {
+                    MessageBox.Show("Tên không được để trống");
+                    return;
+                }
                 em.name = tbName.Text;
+                if (tbAddress.Text == "")
+                {
+                    MessageBox.Show("Địa chỉ không được để trống");
+                    return;
+                }
                 em.address = tbAddress.Text;
                 em.dob = dtpDOB.Value.Date;
                 em.gender = ckGender.Checked;
+                if (cbDepartment.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phòng ban");
+                    return;
+                }
                 em.deparment_id = (int)cbDepartment.SelectedValue;
+                if (cbRole.SelectedValue == null) {
+                    MessageBox.Show("Vui lòng chọn chức vụ");
+                    return;
+                }
                 em.role_id = (int)cbRole.SelectedValue;
                 if (!string.IsNullOrEmpty(fileName))
                 {
@@ -102,7 +121,7 @@ namespace QuanLyNhanVien
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Mã nhân viên đã tồn tại hoặc thông tin chưa đầy đủ");
+                MessageBox.Show("Mã nhân viên đã tồn tại");
             }
             
             bs.ResetBindings(false);
@@ -143,11 +162,31 @@ namespace QuanLyNhanVien
             if (em != null)
             {
                 em.id = int.Parse(tbId.Text);
+                if (tbName.Text == "")
+                {
+                    MessageBox.Show("Tên không được để trống");
+                    return;
+                }
                 em.name = tbName.Text;
+                if (tbAddress.Text == "")
+                {
+                    MessageBox.Show("Địa chỉ không được để trống");
+                    return;
+                }
                 em.address = tbAddress.Text;
                 em.dob = dtpDOB.Value.Date;
                 em.gender = ckGender.Checked;
+                if (cbDepartment.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phòng ban");
+                    return;
+                }
                 em.deparment_id = (int)cbDepartment.SelectedValue;
+                if (cbRole.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn chức vụ");
+                    return;
+                }
                 em.role_id = (int)cbRole.SelectedValue;
                 if (!string.IsNullOrEmpty(fileName))
                 {

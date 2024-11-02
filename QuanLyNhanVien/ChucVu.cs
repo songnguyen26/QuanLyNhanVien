@@ -51,7 +51,17 @@ namespace QuanLyNhanVien
             try
             {
                 role.id = int.Parse(tbId.Text);
+                if (tbName.Text == "")
+                {
+                    MessageBox.Show("Tên chức vụ không được để trống");
+                    return;
+                }
                 role.name = tbName.Text;
+                if (cbDepartment.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phòng ban");
+                    return;
+                }
                 role.department_id = (int)cbDepartment.SelectedValue;
                 context.Roles.Add(role);
                 context.SaveChanges();
@@ -59,7 +69,7 @@ namespace QuanLyNhanVien
             }
             catch(Exception ex) 
             {
-                MessageBox.Show("id đã tồn tại hoặc thông tin chưa đầy đủ" + ex);
+                MessageBox.Show("id đã tồn tại");
             }
             bs.ResetBindings(false);
         }
@@ -96,7 +106,17 @@ namespace QuanLyNhanVien
                 try
                 {
                     role.id = int.Parse(tbId.Text);
+                    if (tbName.Text == "")
+                    {
+                        MessageBox.Show("Tên chức vụ không được để trống");
+                        return;
+                    }
                     role.name = tbName.Text;
+                    if (cbDepartment.SelectedValue == null)
+                    {
+                        MessageBox.Show("Vui lòng chọn phòng ban");
+                        return;
+                    }
                     role.department_id = (int)cbDepartment.SelectedValue;
                     context.Entry(role).State = System.Data.Entity.EntityState.Modified;
                     context.SaveChanges();

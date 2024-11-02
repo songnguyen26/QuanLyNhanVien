@@ -37,6 +37,20 @@ namespace QuanLyNhanVien
             try
             {
                 dep.id = int.Parse(tbId.Text);
+                if (tbName.Text == "")
+                {
+                    MessageBox.Show("Tên phòng ban không được để trống");
+                    return;
+                }
+                var objDep = getData();
+                foreach (var item in objDep)
+                {
+                    if (tbName.Text == item.name)
+                    {
+                        MessageBox.Show("Phòng ban đã tồn tại");
+                        return;
+                    }
+                }
                 dep.name = tbName.Text;
                 context.Departments.Add(dep);
                 context.SaveChanges();
@@ -81,6 +95,20 @@ namespace QuanLyNhanVien
                 try
                 {
                     dep.id = int.Parse(tbId.Text);
+                    if (tbName.Text == "")
+                    {
+                        MessageBox.Show("Tên phòng ban không được để trống");
+                        return;
+                    }
+                    var objDep = getData();
+                    foreach( var item in objDep)
+                    {
+                        if (tbName.Text == item.name)
+                        {
+                            MessageBox.Show("Phòng ban đã tồn tại");
+                            return;
+                        }
+                    }
                     dep.name = tbName.Text;
                     context.Entry(dep).State = System.Data.Entity.EntityState.Modified;
                     context.SaveChanges();
